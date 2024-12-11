@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mvmm/feature/spalsh/presentaion/views/splash_view.dart';
 
 import 'constants.dart';
 import 'core/utils/app_router.dart';
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      routerConfig: AppRouter.router, // Use the GoRouter instance here
+      routerConfig: AppRouter.router,
     );
   }
 }
