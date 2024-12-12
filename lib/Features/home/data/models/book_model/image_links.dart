@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 
 class ImageLinks extends Equatable {
-  final String thumbnail;
-  final String smallThumbnail;
+  final String? thumbnail;
+  final String? smallThumbnail;
 
   const ImageLinks({
-    required this.thumbnail,
-    required this.smallThumbnail,
+    this.thumbnail,
+    this.smallThumbnail,
   });
 
   factory ImageLinks.fromJson(Map<dynamic, dynamic> json) => ImageLinks(
-    thumbnail: json["thumbnail"],
-    smallThumbnail: json["smallThumbnail"],
+    thumbnail: json["thumbnail"] as String?,
+    smallThumbnail: json["smallThumbnail"] as String?,
   );
 
   Map<dynamic, dynamic> toJson() => {

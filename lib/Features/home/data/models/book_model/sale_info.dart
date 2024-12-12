@@ -12,9 +12,9 @@ class SaleInfo extends Equatable {
   });
 
   factory SaleInfo.fromJson(Map<dynamic, dynamic> json) => SaleInfo(
-    country: json["country"],
-    isEbook: json["isEbook"],
-    saleability: json["saleability"],
+    country: json["country"] ?? '',
+    isEbook: json["isEbook"] ?? false,
+    saleability: json["saleability"] ?? '',
   );
 
   Map<dynamic, dynamic> toJson() => {

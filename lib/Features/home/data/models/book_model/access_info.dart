@@ -1,14 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:mvmm/Features/home/data/models/book_model/epub.dart';
 
-
 class AccessInfo extends Equatable {
   final String accessViewStatus;
   final String country;
   final String viewability;
-  final Epub pdf;
-  final String webReaderLink;
-  final Epub epub;
+  final Epub? pdf; // Nullable if "pdf" might be null in JSON
+  final String? webReaderLink; // Nullable if "webReaderLink" might be null
+  final Epub? epub; // Nullable if "epub" might be null
   final bool publicDomain;
   final bool quoteSharingAllowed;
   final bool embeddable;
@@ -18,9 +17,9 @@ class AccessInfo extends Equatable {
     required this.accessViewStatus,
     required this.country,
     required this.viewability,
-    required this.pdf,
-    required this.webReaderLink,
-    required this.epub,
+    this.pdf,
+    this.webReaderLink,
+    this.epub,
     required this.publicDomain,
     required this.quoteSharingAllowed,
     required this.embeddable,
@@ -28,25 +27,25 @@ class AccessInfo extends Equatable {
   });
 
   factory AccessInfo.fromJson(Map<dynamic, dynamic> json) => AccessInfo(
-    accessViewStatus: json["accessViewStatus"],
-    country: json["country"],
-    viewability: json["viewability"],
-    pdf: Epub.fromJson(json["pdf"]),
+    accessViewStatus: json["accessViewStatus"] ?? '',
+    country: json["country"] ?? '',
+    viewability: json["viewability"] ?? '',
+    pdf: json["pdf"] != null ? Epub.fromJson(json["pdf"]) : null,
     webReaderLink: json["webReaderLink"],
-    epub: Epub.fromJson(json["epub"]),
-    publicDomain: json["publicDomain"],
-    quoteSharingAllowed: json["quoteSharingAllowed"],
-    embeddable: json["embeddable"],
-    textToSpeechPermission: json["textToSpeechPermission"],
+    epub: json["epub"] != null ? Epub.fromJson(json["epub"]) : null,
+    publicDomain: json["publicDomain"] ?? false,
+    quoteSharingAllowed: json["quoteSharingAllowed"] ?? false,
+    embeddable: json["embeddable"] ?? false,
+    textToSpeechPermission: json["textToSpeechPermission"] ?? '',
   );
 
   Map<dynamic, dynamic> toJson() => {
     "accessViewStatus": accessViewStatus,
     "country": country,
     "viewability": viewability,
-    "pdf": pdf.toJson(),
+    "pdf": pdf?.toJson(), // Use ?. to handle nullability
     "webReaderLink": webReaderLink,
-    "epub": epub.toJson(),
+    "epub": epub?.toJson(), // Use ?. to handle nullability
     "publicDomain": publicDomain,
     "quoteSharingAllowed": quoteSharingAllowed,
     "embeddable": embeddable,
