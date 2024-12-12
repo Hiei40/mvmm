@@ -1,5 +1,6 @@
-import 'package:bookly/constants.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../../constants.dart';
 
 abstract class Styles {
   static const textStyle18 = TextStyle(
