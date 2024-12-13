@@ -1,23 +1,24 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:mvmm/Features/home/data/models/book_model/book.dart';
 import 'package:mvmm/Features/home/data/repo/home_repo.dart';
 import 'package:mvmm/core/errors/faliure.dart';
 import 'package:mvmm/core/utils/api_service.dart';
+
+import '../models/book_model/book_model.dart';
 
 class HomeRepoImp implements HomeRepo {
   final Apiservice apiservice;
 
   HomeRepoImp(this.apiservice);
   @override
-  Future<Either<Failure, List<Bookmodel>>> fetchNewsetBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchNewsetBooks() async {
     try {
       var data = await apiservice.get(
           endpoint:
           'volumes?Filtering=free-ebooks&Sorting=newest &q=programming');
-      List<Bookmodel> books = [];
+      List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(Bookmodel.fromJson(item));
+        books.add(BookModel.fromJson(item));
       }
       return Right(books);
     }
@@ -31,13 +32,13 @@ class HomeRepoImp implements HomeRepo {
 
 
   @override
-  Future<Either<Failure, List<Bookmodel>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
       var data = await apiservice.get(
           endpoint: 'volumes?Filtering=free-ebooks&q=subject:Programming');
-      List<Bookmodel> books = [];
+      List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(Bookmodel.fromJson(item));
+        books.add(BookModel.fromJson(item));
       }
 
       return right(books);

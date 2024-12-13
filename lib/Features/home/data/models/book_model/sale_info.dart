@@ -1,28 +1,24 @@
 import 'package:equatable/equatable.dart';
 
 class SaleInfo extends Equatable {
-  final String country;
-  final bool isEbook;
-  final String saleability;
+  final String? country;
+  final String? saleability;
+  final bool? isEbook;
 
-  const SaleInfo({
-    required this.country,
-    required this.isEbook,
-    required this.saleability,
-  });
+  const SaleInfo({this.country, this.saleability, this.isEbook});
 
-  factory SaleInfo.fromJson(Map<dynamic, dynamic> json) => SaleInfo(
-    country: json["country"] ?? '',
-    isEbook: json["isEbook"] ?? false,
-    saleability: json["saleability"] ?? '',
-  );
+  factory SaleInfo.fromJson(Map<String, dynamic> json) => SaleInfo(
+        country: json['country'] as String?,
+        saleability: json['saleability'] as String?,
+        isEbook: json['isEbook'] as bool?,
+      );
 
-  Map<dynamic, dynamic> toJson() => {
-    "country": country,
-    "isEbook": isEbook,
-    "saleability": saleability,
-  };
+  Map<String, dynamic> toJson() => {
+        'country': country,
+        'saleability': saleability,
+        'isEbook': isEbook,
+      };
 
   @override
-  List<Object?> get props => [country, isEbook, saleability];
+  List<Object?> get props => [country, saleability, isEbook];
 }
