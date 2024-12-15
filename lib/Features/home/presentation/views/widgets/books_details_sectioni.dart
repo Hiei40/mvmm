@@ -19,7 +19,8 @@ class BookDetailsSection extends StatelessWidget {
             horizontal: width * .2,
           ),
           child: const CustomBookImage(
-            imageUrl: '',
+            imageUrl:
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png',
           ),
         ),
         const SizedBox(
@@ -48,6 +49,8 @@ class BookDetailsSection extends StatelessWidget {
           height: 18,
         ),
         const BookRating(
+          rating: 5,
+          count: 250,
           mainAxisAlignment: MainAxisAlignment.center,
         ),
         const SizedBox(

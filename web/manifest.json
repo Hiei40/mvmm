@@ -1,6 +1,6 @@
 {
-    "name": "mvmm",
-    "short_name": "mvmm",
+    "name": "bookly",
+    "short_name": "bookly",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

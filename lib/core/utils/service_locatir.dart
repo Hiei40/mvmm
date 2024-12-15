@@ -1,12 +1,13 @@
+import 'package:bookly/core/utils/api_service.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mvmm/Features/home/data/repo/home_repo_imp.dart';
-import 'package:mvmm/core/utils/api_service.dart';
+
+import '../../Features/home/data/repo/home_repo_imp.dart';
 
 final getit = GetIt.instance;
 void setup() {
-  getit.registerSingleton<Apiservice>(Apiservice(Dio()));
-  getit.registerSingleton<HomeRepoImp>(HomeRepoImp(getit.get<Apiservice>()));
+  getit.registerSingleton<ApiService>(ApiService(Dio()));
+  getit.registerSingleton<HomeRepoImp>(HomeRepoImp(getit.get<ApiService>()));
 }
 
 

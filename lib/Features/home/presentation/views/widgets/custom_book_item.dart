@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/assets.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({super.key, required this.imageUrl});
-final String imageUrl;
+  const CustomBookImage({Key? key, required this.imageUrl}) : super(key: key);
+
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -13,10 +14,11 @@ final String imageUrl;
       child: AspectRatio(
         aspectRatio: 2.6 / 4,
         child: CachedNetworkImage(
-        fit: BoxFit.fill,
+          fit: BoxFit.fill,
           imageUrl: imageUrl,
-          placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-          errorWidget: (context, url, error) => const Icon(Icons.error),
+          errorWidget: (context, url, error) => const Icon(
+            Icons.error,
+          ),
         ),
       ),
     );
